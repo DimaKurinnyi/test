@@ -1,0 +1,201 @@
+.SingUp {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+
+  background-image: url('/src/assets/AdobeStock.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.h1 {
+  position: relative;
+  background-position: -200%;
+  background-size: 200%;
+  animation: bg-animation 4s infinite alternate-reverse;
+  background-image: linear-gradient(90deg, #ff7948, #fe9452);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+
+  font-size: 54px;
+  line-height: 120%;
+  text-transform: capitalize;
+}
+@keyframes bg-animation {
+  100% {
+    background-position: 200%;
+  }
+}
+
+$base: 0.6rem;
+
+.btn_content {
+  position: relative;
+  margin-top: 80px;
+}
+.btn {
+  text-align: center;
+  background: linear-gradient(90deg, #ff5748, #fe9452);
+  cursor: pointer;
+  color: #000;
+  border-radius: 16px;
+  padding: 12px 45px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  transition: 0.5s;
+  margin-top: 0;
+  animation: jump-shaking 0.83s infinite;
+}
+@keyframes jump-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateY(-9px);
+  }
+  35% {
+    transform: translateY(-9px) rotate(17deg);
+  }
+  55% {
+    transform: translateY(-9px) rotate(-17deg);
+  }
+  65% {
+    transform: translateY(-9px) rotate(17deg);
+  }
+  75% {
+    transform: translateY(-9px) rotate(-17deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+.chevron {
+  top: -105px;
+  left: 77px;
+  position: absolute;
+  width: $base * 3.5;
+  height: $base * 0.8;
+  opacity: 0;
+  transform: scale(0.3);
+  animation: move-chevron 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move-chevron 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move-chevron 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: #fe9452;
+}
+
+.chevron:before {
+  left: 0;
+  transform: skewY(30deg);
+}
+
+.chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skewY(-30deg);
+}
+
+@keyframes move-chevron {
+  25% {
+    opacity: 1;
+  }
+  33.3% {
+    opacity: 1;
+    transform: translateY($base * 3.8);
+  }
+  66.6% {
+    opacity: 1;
+    transform: translateY($base * 5.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY($base * 8) scale(0.5);
+  }
+}
+.footer {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.contentHelper {
+  width: 45%;
+  position: relative;
+
+  & .numSpan {
+    font-weight: 500;
+    font-size: 85px;
+    line-height: 72px;
+    position: absolute;
+    left: 0;
+    top: 13px;
+    z-index: -1;
+    background: -webkit-linear-gradient(270deg, #fe5e49, var(--color-bg));
+    -webkit-text-fill-color: var(--color-bg);
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 4px transparent;
+  }
+
+  & h3 {
+    padding-left: 25px;
+    font-size: 40px;
+    line-height: 58px;
+    margin-top: 55px;
+    & .textSpan {
+      color: var(--color-text-yellow);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .h1 {
+    font-size: 25px;
+  }
+  .SingUp {
+    background-repeat: repeat;
+  background-position: center;
+    margin: 80px 0px;
+    background-size: contain;
+    h3 {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+  .pay_button {
+    width: 100%;
+  }
+  .footer {
+    flex-direction: column;
+    .contentHelper {
+        width: 100%;
+        & h3 {
+          margin-right: 20px;
+          font-size: 30px;
+          margin-bottom: 40px;
+        }
+      }
+    
+   
+  }
+}
