@@ -1,4 +1,4 @@
-import style from './SingUP.module.scss';
+import style from './SingUp.module.scss';
 
 export const SingUp = () => {
   return (
