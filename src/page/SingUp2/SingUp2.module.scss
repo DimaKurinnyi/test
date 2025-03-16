@@ -50,7 +50,7 @@ $base: 0.6rem;
   line-height: 26px;
   transition: 0.5s;
   margin-top: 0;
-  animation: jump-shaking 0.83s infinite;
+  animation: jump-shaking 2s infinite;
 }
 @keyframes jump-shaking {
   0% {
@@ -60,16 +60,16 @@ $base: 0.6rem;
     transform: translateY(-9px);
   }
   35% {
-    transform: translateY(-9px) rotate(17deg);
+    transform: translateY(-9px) rotate(10deg);
   }
   55% {
-    transform: translateY(-9px) rotate(-17deg);
+    transform: translateY(-9px) rotate(-10deg);
   }
   65% {
-    transform: translateY(-9px) rotate(17deg);
+    transform: translateY(-9px) rotate(10deg);
   }
   75% {
-    transform: translateY(-9px) rotate(-17deg);
+    transform: translateY(-9px) rotate(-10deg);
   }
   100% {
     transform: translateY(0) rotate(0);

@@ -14,9 +14,9 @@ export const SingUp2 = () => {
           <div className={style.chevron}></div>
           <div className={style.chevron}></div>
         </div>
-        <a className={style.btn} href="https://flary.finance/?utm_source=promopage&utm_medium=cpc&utm_campaign=promo1">
-          Buy Now
-        </a>
+        <div className={style.btn}>
+          <a href="https://flary.finance/?utm_source=promopage&utm_medium=cpc&utm_campaign=promo1">Buy Now</a>
+        </div>
       </div>
 
       <div className={style.footer}>
