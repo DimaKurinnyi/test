@@ -8,7 +8,7 @@ export const SingUp = () => {
       <p className="font-bold text-2xl text-gray-200 relative">
         1 <span className="text-[#fe9452]">$FLFI</span> = 0.09$
       </p>
-      <a className={style.pay_button} href="https://flary.finance/?utm_source=promopage&utm_medium=cpc&utm_campaign=promo1" >
+      <a className={`${style.btn} ${style['neon-pulse']}`} href="https://flary.finance/?utm_source=promopage&utm_medium=cpc&utm_campaign=promo1" >
         Buy Now
       </a>
     </div>

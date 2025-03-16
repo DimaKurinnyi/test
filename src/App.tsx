@@ -10,7 +10,7 @@ import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
 
 import '@solana/wallet-adapter-react-ui/styles.css';
-import { SingUp } from './page/SingIn/SingUp';
+import { SingUp } from './page/SingUp/SingUp';
 
 function App() {
   const { isConnected, address } = useAccount();

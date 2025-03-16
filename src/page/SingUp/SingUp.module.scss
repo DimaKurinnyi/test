@@ -1,16 +1,18 @@
 .SingUp {
+  background: rgb(29, 30, 44);
+  border-radius: 15px;
+  margin: 80px ;
   flex: 1;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 40px;
 
-  background-image: url('/src/assets/AboutAs_singUp.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom;
+  // background-image: url('/src/assets/AboutAs_singUp.png');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: bottom;
 }
 // .SingUp::before {
 //   height: 100%;
@@ -44,6 +46,56 @@
   }
 }
 
+.btn {
+  position: relative;
+  padding: 10px 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  min-width: 200px;
+  z-index: 1;
+}
+
+.neon-pulse {
+  background: #ff7948;
+  border: 2px solid #ff7948;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  overflow: visible;
+}
+
+.neon-pulse::before,
+.neon-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid #ff7948;
+  border-radius: inherit;
+  animation: pulseOut 2s ease-out infinite;
+  opacity: 0;
+}
+
+.neon-pulse::after {
+  animation-delay: 1s;
+}
+
+@keyframes pulseOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+
 .pay_button {
   position: relative;
   width: 20%;
@@ -64,9 +116,10 @@
 
 @media (max-width: 500px) {
   .h1 {
-    font-size: 27px;
+    font-size: 25px;
   }
   .SingUp {
+    margin: 80px 0px ;
     background-size: contain;
     h3 {
       font-size: 14px;
