@@ -3,7 +3,7 @@ import style from './Contact.module.scss';
 
 export const Contact = () => {
   const buttonContent = [
-    { link: '/how-to-buy', tittle: 'How To Buy' },
+    { link: '/how-to-buy', tittle: 'How To Buy',id: 'how-to-buy' },
     // { link: '/giveaway', tittle: 'Win $333K' },
   ];
   return (
