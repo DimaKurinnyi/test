@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useAccount } from 'wagmi';
 import './App.css';
 import { Footer1 } from './components';
-import { Contact, Giveaway, Home, HowToBuy, SingUp2 } from './page';
+import { Contact, Giveaway, Home, HowToBuy, SingUp2, SingUp3 } from './page';
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
@@ -62,6 +62,8 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/singup" element={<SingUp />} />
                 <Route path="/singup2" element={<SingUp2 />} />
+                <Route path="/singup3" element={<SingUp3 />} />
+
               </Routes>
             </WalletModalProvider>
           </WalletProvider>
