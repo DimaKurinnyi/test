@@ -51,7 +51,7 @@ export const Footer1 = () => {
     },
   };
   return (
-    <div className={style.Footer} style={params === 'singup2' || params === 'singup3' ? { display: 'none' } : {}}>
+    <div className={style.Footer} style={params === 'singup2' || params === 'singup3' || params === 'singup1.1'|| params === 'singup3.1' ? { display: 'none' } : {}}>
       <div className={style.top} style={params === 'singup' ? { flexDirection: 'row' } : {}}>
         <motion.div className={style.left} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={animation2} transition={{ duration: '1' }}>
           <img src={logo} alt="Logo" />

@@ -5,6 +5,8 @@
   align-items: center;
   flex-direction: column;
   gap: 40px;
+  margin: 0px -160px;
+  padding: 0px 160px;
 
   background-image: url('/src/assets/AdobeStock.png');
   background-size: cover;
@@ -174,8 +176,9 @@ $base: 0.6rem;
   }
   .SingUp {
     background-repeat: repeat;
-  background-position: center;
-    margin: 80px 0px;
+    background-position: center;
+    padding: 80px 20px;
+    margin: 0px -20px;
     background-size: contain;
     h3 {
       font-size: 14px;
@@ -188,14 +191,12 @@ $base: 0.6rem;
   .footer {
     flex-direction: column;
     .contentHelper {
-        width: 100%;
-        & h3 {
-          margin-right: 20px;
-          font-size: 30px;
-          margin-bottom: 40px;
-        }
+      width: 100%;
+      & h3 {
+        margin-right: 20px;
+        font-size: 30px;
+        margin-bottom: 40px;
       }
-    
-   
+    }
   }
 }

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useAccount } from 'wagmi';
 import './App.css';
 import { Footer1 } from './components';
-import { Contact, Giveaway, Home, HowToBuy, SingUp2, SingUp3 } from './page';
+import { Contact, Giveaway, Home, HowToBuy, SingUp1, SingUp2, SingUp3 } from './page';
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
@@ -11,6 +11,7 @@ import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
 
 import '@solana/wallet-adapter-react-ui/styles.css';
 import { SingUp } from './page/SingUp/SingUp';
+import { SingUp4 } from './page/SingUp3.1/SingUp3';
 
 function App() {
   const { isConnected, address } = useAccount();
@@ -61,8 +62,10 @@ function App() {
                 <Route path="/giveaway" element={<Giveaway />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/singup" element={<SingUp />} />
+                <Route path="/singup1.1" element={<SingUp1 />} />
                 <Route path="/singup2" element={<SingUp2 />} />
                 <Route path="/singup3" element={<SingUp3 />} />
+                <Route path="/singup3.1" element={<SingUp4 />} />
 
               </Routes>
             </WalletModalProvider>
