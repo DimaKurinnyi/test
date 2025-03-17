@@ -161,7 +161,14 @@ $base: 0.6rem;
 }
 @media (max-width: 860px) {
   .title {
-    display: none;
+    width: 79%;
+    position: absolute;
+    font-size: 16px;
+    line-height: 32px;
+    font-weight: 700;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 330%);
   }
   .sections {
     flex-direction: column;

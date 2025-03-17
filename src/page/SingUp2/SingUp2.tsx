@@ -6,7 +6,7 @@ export const SingUp2 = () => {
       <h1 className={style.h1}>Flary presale live!</h1>
       <h2 className="relative">Buy $FLFI now</h2>
       <p className="font-bold text-2xl text-gray-200 relative">
-        1 <span className="text-[#fe9452]">$FLFI</span> = 0.09$
+        1 <span className="text-[#fe9452]">$FLFI</span> = 0.086$
       </p>
       <div className={style.btn_content}>
         <div >
