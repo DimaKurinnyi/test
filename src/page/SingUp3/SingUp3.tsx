@@ -35,7 +35,7 @@ export const SingUp3 = () => {
           <p>The whole space at single place</p>
         </div>
         <div className={style.section}>
-          <h3>FUSE TRADFI WITH wWEB3</h3>
+          <h3>FUSE TRADFI WITH WEB3</h3>
           <p>Redefine wealth with DeFI technologies</p>
         </div>
       </div>
