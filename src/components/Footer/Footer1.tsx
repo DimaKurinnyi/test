@@ -51,14 +51,14 @@ export const Footer1 = () => {
     },
   };
   return (
-    <div className={style.Footer} style={params === 'singup2' || params === 'singup3' || params === 'singup1.1'|| params === 'singup3.1' ? { display: 'none' } : {}}>
-      <div className={style.top} style={params === 'singup' ? { flexDirection: 'row' } : {}}>
+    <div className={style.Footer} style={params === 'promo1' || params === 'promo2' || params === 'promo3'|| params === 'promo4' ? { display: 'none' } : {}}>
+      <div className={style.top} style={params === 'promo' ? { flexDirection: 'row' } : {}}>
         <motion.div className={style.left} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={animation2} transition={{ duration: '1' }}>
           <img src={logo} alt="Logo" />
           <p>Enter Flary, a game-changer in the world of DeFI.</p>
         </motion.div>
         <motion.div className={style.right} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <div className={style.nav} style={params === 'singup' ? { display: 'none' } : {}}>
+          <div className={style.nav} style={params === 'promo' ? { display: 'none' } : {}}>
             <motion.p variants={animation} transition={{ duration: '1' }}>
               Navigation
             </motion.p>
@@ -135,8 +135,8 @@ export const Footer1 = () => {
           </div>
         </motion.div>
       </div>
-      <div className={style.middle} style={params === 'singup' ? { display: 'none' } : {}}></div>
-      <div className={style.bottom} style={params === 'singup' ? { display: 'none' } : {}}>
+      <div className={style.middle} style={params === 'promo' ? { display: 'none' } : {}}></div>
+      <div className={style.bottom} style={params === 'promo' ? { display: 'none' } : {}}>
         <div className={style.address}>
           <p>© 2024 Flary. All rights reserved.</p>
           <p>Al Sila Tower - 24th - Al Maryah Island - Abu Dhabi, UAE</p>
