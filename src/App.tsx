@@ -61,12 +61,11 @@ function App() {
                 <Route path="/how-to-buy" element={<HowToBuy />} />
                 <Route path="/giveaway" element={<Giveaway />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/singup" element={<SingUp />} />
-                <Route path="/singup1.1" element={<SingUp1 />} />
-                <Route path="/singup2" element={<SingUp2 />} />
-                <Route path="/singup3" element={<SingUp3 />} />
-                <Route path="/singup3.1" element={<SingUp4 />} />
-
+                <Route path="/promo" element={<SingUp />} />
+                <Route path="/promo1" element={<SingUp1 />} />
+                <Route path="/promo2" element={<SingUp2 />} />
+                <Route path="/promo3" element={<SingUp3 />} />
+                <Route path="/promo4" element={<SingUp4 />} />
               </Routes>
             </WalletModalProvider>
           </WalletProvider>
