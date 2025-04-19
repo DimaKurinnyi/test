@@ -6,8 +6,8 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import ConnectHeaderMenu from '../ConnectHeaderMenu/ConnectHeaderMenu';
 
-
-export const Navbar = ({ navLink }: { navLink: { id: string; tittle: string; link: string }[] }) => {
+//@ts-ignore
+export const Navbar = ({ navLink }) => {
   const params = useLocation().pathname.slice(1);
 
   const [mobileNav, SetMobileNav] = useState(false);
@@ -38,7 +38,7 @@ export const Navbar = ({ navLink }: { navLink: { id: string; tittle: string; lin
             </Link>
           </li>
 
-          {navLink.map((item: { id: string; tittle: string; link: string }, i: number) => (
+          {navLink.map((item: any, i: any) => (
             // console.log(item.tittle.toLowerCase())
             <li key={i}>
               <Link to={item.link} style={params === item.id ? { color: '#ffc837' } : {}}>
@@ -100,7 +100,7 @@ export const Navbar = ({ navLink }: { navLink: { id: string; tittle: string; lin
                 Home
               </Link>
             </li>
-            {navLink.map((item: { id: string; tittle: string; link: string }, i: number) => (
+            {navLink.map((item: any, i: any) => (
               <li key={i}>
                 <Link to={item.link}>{item.tittle}</Link>
               </li>

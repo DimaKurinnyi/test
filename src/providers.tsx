@@ -20,7 +20,7 @@ const connectors = connectorsForWallets([
     groupName: 'EVN',
     wallets: [rainbowWallet, walletConnectWallet, rabbyWallet, metaMaskWallet, coinbaseWallet]
   },
-  
+
 ], {
   appName: 'RainbowKit demo',
   projectId: projectId,
@@ -33,8 +33,8 @@ export const config = createConfig({
   chains: [mainnet, bsc],
 
   transports: {
-    [mainnet.id]: http("https://dimensional-burned-forest.quiknode.pro/bb01b18bee85d6856b5f86aeb92b63424913bacd"),
-    [bsc.id]: http("https://solitary-intensive-thunder.bsc.quiknode.pro/108841f2c56aaf76b159d6c107d3ad390711260e"),
+    [mainnet.id]: http("https://nodes.flary.finance/eth"),
+    [bsc.id]: http("https://nodes.flary.finance/bsc"),
   },
 });
 const queryClient = new QueryClient();

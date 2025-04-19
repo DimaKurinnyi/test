@@ -4,14 +4,14 @@ import {
 
 export const config = {
     ETH_CONTRACT_ADDRESS_OLD: "0xDC55a5aCcAB5cf8C6B3286920C282fe3AA6AE68F",
-    ETH_CONTRACT_ADDRESS:'0x1ea9Bcd9C7483c9570057921459F4A64aFf39b0d',
+    ETH_CONTRACT_ADDRESS: '0x1ea9Bcd9C7483c9570057921459F4A64aFf39b0d',
     BSC_CONTRACT_ADDRESS: "0x32ceB379Ac314A1FbFF5BE37B0875172893Cd79f",
 
     ETH_USDT_ADDRESS: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
     BSC_USDT_ADDRESS: "0x55d398326f99059fF775485246999027B3197955",
 
-    RPC_ETH: "https://dimensional-burned-forest.quiknode.pro/bb01b18bee85d6856b5f86aeb92b63424913bacd",
-    RPC_BSC: "https://solitary-intensive-thunder.bsc.quiknode.pro/108841f2c56aaf76b159d6c107d3ad390711260e",
+    RPC_ETH: "https://nodes.flary.finance/eth",
+    RPC_BSC: "https://nodes.flary.finance/bsc",
 
     SOL_USDC_ADDRESS: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
 

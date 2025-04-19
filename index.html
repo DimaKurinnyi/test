@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo192.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/logo192.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Flary</title>
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
         var f = d.getElementsByTagName(s)[0],
           j = d.createElement(s),
           dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -18,59 +18,93 @@
       })(window, document, 'script', 'dataLayer', 'GTM-K42T3SM8');
     </script>
 
-    <!-- pixel -->
-     <script type="text/javascript">
-      adroll_adv_id = "QXUV7IQBI5FS3KQAFFP5XG";
-      adroll_pix_id = "PZOHT2OHPVFZLIJZEC3LS5";
+    <script type="text/javascript">
+      adroll_adv_id = "EGM5HN7FWNGDRBDLDXAPR5";
+      adroll_pix_id = "L6N6ZQNZ5ZCNLDKBETZ3M6";
       adroll_version = "2.0";
-
-      (function(w, d, e, o, a) {
-          w.__adroll_loaded = true;
-          w.adroll = w.adroll || []; ;
-          w.adroll.f = [ 'setProperties', 'identify', 'track', 'identify_email', 'get_cookie' ];
-          var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id
-                  + "/roundtrip.js";
-          for (a = 0; a < w.adroll.f.length; a++) {
-              w.adroll[w.adroll.f[a]] = w.adroll[w.adroll.f[a]] || (function(n) {
-                  return function() {
-                      w.adroll.push([ n, arguments ])
-                  }
-              })(w.adroll.f[a])
-          }
-
-          e = d.createElement('script');
-          o = d.getElementsByTagName('script')[0];
-          e.async = 1;
-          e.src = roundtripUrl;
-          o.parentNode.insertBefore(e, o);
+      (function (w, d, e, o, a) {
+        w.__adroll_loaded = true;
+        w.adroll = w.adroll || [];
+        w.adroll.f = ['setProperties', 'identify', 'track', 'identify_email', 'get_cookie'];
+        var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js";
+        for (a = 0; a < w.adroll.f.length; a++) {
+          w.adroll[w.adroll.f[a]] = w.adroll[w.adroll.f[a]] || (function(n) {
+            return function () {
+              w.adroll.push([n, arguments])
+            }
+          })(w.adroll.f[a])
+        }
+        e = d.createElement('script');
+        o = d.getElementsByTagName('script')[0];
+        e.async = 1;
+        e.src = roundtripUrl;
+        o.parentNode.insertBefore(e, o);
       })(window, document);
       adroll.track("pageView");
-    </script> 
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N64NSXV8X7"></script>
     <script>
+      function getAllUrlParamsAsObject() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let paramsObj = {};
+
+        urlParams.forEach((value, key) => {
+          paramsObj[key] = value; // Dynamically assign key-value pairs
+        });
+
+        return paramsObj;
+      }
+
       window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'page_view',
+        ...getAllUrlParamsAsObject()
+      });
+      window.dataLayer.push({
+        event: "PurchaseTest",
+        button_name: "Purchase Test",
+      });
+
       function gtag() {
         dataLayer.push(arguments);
       }
+
       gtag('js', new Date());
 
       gtag('config', 'G-N64NSXV8X7');
+      gtag('event', 'page_view', {
+        ...getAllUrlParamsAsObject()
+      });
+      gtag('event', 'first_visit', {
+        ...getAllUrlParamsAsObject()
+      });
+      gtag('event', 'buy_flfi', {
+        ...getAllUrlParamsAsObject()
+      });
+      gtag('event', 'Connect wallet (pop up)', {
+        ...getAllUrlParamsAsObject()
+      });
+      gtag('event', 'Purchase', {
+        ...getAllUrlParamsAsObject()
+      });
     </script>
-  </head>
+</head>
 
-  <body>
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-K42T3SM8"
-        height="0"
-        width="0"
-        style="display: block; visibility: hidden"
-      ></iframe
-    ></noscript>
+<body>
+<noscript
+>
+    <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K42T3SM8"
+            height="0"
+            width="0"
+            style="display: block; visibility: hidden"
+    ></iframe
+    >
+</noscript>
 
-    <div id="root"></div>
-    <script type="module" src="src/main.tsx"></script>
-  </body>
+<div id="root"></div>
+<script type="module" src="src/main.tsx"></script>
+</body>
 </html>

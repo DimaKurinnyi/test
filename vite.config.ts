@@ -21,6 +21,10 @@ export default defineConfig({
       buffer: path.resolve(__dirname, 'node_modules', 'buffer')
     }
   },
+  build: {
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
+  },
   // define: {
   //   'globalThis.Buffer': 'buffer.Buffer' // This makes Buffer available in the global scope
   // }

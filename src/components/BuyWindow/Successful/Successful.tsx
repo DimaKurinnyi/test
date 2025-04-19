@@ -2,12 +2,17 @@ import { useEffect } from 'react';
 import style from './Successful.module.scss';
 import useStore from "@/store";
 import {useAccount} from "wagmi";
+import dayjs from "dayjs";
+import ReactGA from "react-ga4";
 declare global {
 	interface Window {
 		adroll?: {
 			track: (event: string, data: Record<string, unknown>) => void;
 			record_user: (data: { adroll_segments: string }) => void;
 		};
+		gtag?: {
+			track: (event: string, data: Record<string, unknown>) => void;
+		}
 	}
 }
 
@@ -44,7 +49,19 @@ export const Successful = () => {
 			}
 		};
 
+		const checkGM = () => {
+			ReactGA.event("purchase_new", {
+				order_id: network || "UNKNOWN",
+				user_id: address || "UNKNOWN",
+				conversion_value: tokensFromAmount || "0",
+				currency: token || "USD",
+				date: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+				debug_mode: true
+			});
+		}
+
 		checkAdRoll();
+		checkGM();
 	}, [address, network, token, tokensFromAmount]);
 
 	return (

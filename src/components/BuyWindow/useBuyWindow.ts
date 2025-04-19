@@ -1,5 +1,5 @@
-import {useCallback, useEffect, useMemo, useState} from "react";
-import {useAccount, useBalance, useSwitchChain} from "wagmi";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useAccount, useBalance, useSwitchChain } from "wagmi";
 import {
   NETWORK_BSC,
   NETWORK_ETHEREUM, NETWORK_SOLANA, stages,
@@ -7,16 +7,16 @@ import {
   TOKEN_ETHEREUM, TOKEN_SOL, TOKEN_USDC,
   TOKEN_USDT
 } from "@/components/BuyWindow/constants.ts";
-import {getSolanaPrice} from "@/components/BuyWindow/solana/get-solana-price";
-import {getAssociatedTokenAddress} from "@solana/spl-token";
-import {useConnection, useWallet} from "@solana/wallet-adapter-react";
-import {config} from "@/config";
-import {PublicKey} from "@solana/web3.js";
-import {ethers, formatEther, formatUnits, JsonRpcProvider} from "ethers";
-import {NetworksType, TokensType} from "@/components/BuyWindow/types";
-import {getEvmNativeCurrencyPrice} from "@/components/BuyWindow/evm/get-evm-native-coin-price";
-import {getContract} from "@/components/BuyWindow/evm/get-contract";
-import {getSolanaBoughtTokensFromContract} from "@/components/BuyWindow/solana/get-solana-bought-tokens";
+import { getSolanaPrice } from "@/components/BuyWindow/solana/get-solana-price";
+import { getAssociatedTokenAddress } from "@solana/spl-token";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { config } from "@/config";
+import { PublicKey } from "@solana/web3.js";
+import { ethers, formatEther, formatUnits, JsonRpcProvider } from "ethers";
+import { NetworksType, TokensType } from "@/components/BuyWindow/types";
+import { getEvmNativeCurrencyPrice } from "@/components/BuyWindow/evm/get-evm-native-coin-price";
+import { getContract, getOldContract } from "@/components/BuyWindow/evm/get-contract";
+import { getSolanaBoughtTokensFromContract } from "@/components/BuyWindow/solana/get-solana-bought-tokens";
 import useStore from "@/store";
 
 const {
@@ -42,7 +42,7 @@ const roundToDecimalsSmaller = (value: number, decimals: number) => {
 const getGasPriceWithRetry = async (provider: any, retries = 3, delay = 1000) => {
   for (let i = 0; i < retries; i++) {
     try {
-      const {gasPrice} = await provider.getFeeData();
+      const { gasPrice } = await provider.getFeeData();
       return gasPrice;
     } catch (error) {
       if (i < retries - 1) {
@@ -86,14 +86,14 @@ export const useBuyWindow = () => {
     setToken,
     setNetwork
   } = useStore();
-  const {address, chainId, status} = useAccount();
-  const {data: bnbBNB} = useBalance({address});
-  const {connection} = useConnection();
-  const {switchChain} = useSwitchChain();
-  const {publicKey, connected: isSolanaConnected} = useWallet();
-  const {data: ethEth} = useBalance({address});
-  const {data: bnbUsdt} = useBalance({address: address, token: BSC_USDT_ADDRESS as `0x${string}`});
-  const {data: ethUsdt} = useBalance({address, token: ETH_USDT_ADDRESS as `0x${string}`});
+  const { address, chainId, status } = useAccount();
+  const { data: bnbBNB } = useBalance({ address });
+  const { connection } = useConnection();
+  const { switchChain } = useSwitchChain();
+  const { publicKey, connected: isSolanaConnected } = useWallet();
+  const { data: ethEth } = useBalance({ address });
+  const { data: bnbUsdt } = useBalance({ address: address, token: BSC_USDT_ADDRESS as `0x${string}` });
+  const { data: ethUsdt } = useBalance({ address, token: ETH_USDT_ADDRESS as `0x${string}` });
 
   const [solBalance, setSolBalance] = useState(0);
   const [solBalanceFiat, setSolBalanceFiat] = useState(0);
@@ -170,12 +170,12 @@ export const useBuyWindow = () => {
     if (arg === NETWORK_ETHEREUM) {
       setToken(TOKEN_ETHEREUM);
 
-      switchChain({chainId: 1});
+      switchChain({ chainId: 1 });
     }
 
     if (arg === NETWORK_BSC) {
       setToken(TOKEN_BNB);
-      switchChain({chainId: 56});
+      switchChain({ chainId: 56 });
     }
 
     if (arg === NETWORK_SOLANA) {
@@ -249,10 +249,20 @@ export const useBuyWindow = () => {
 
       const balance = await contract.investemetByAddress(address);
 
-      return Number(ethers.formatEther(balance));
+      let oldCOntractBalance = 0;
+      if (network === NETWORK_ETHEREUM) {
+        const oldContract = getOldContract(provider);
+        const oldBalance = await oldContract.investemetByAddress(address);
+        oldCOntractBalance = Number(ethers.formatEther(oldBalance));
+      }
+
+      console.log(network, balance, oldCOntractBalance)
+
+      return Number(ethers.formatEther(balance)) + oldCOntractBalance;
     };
 
     let sum = 0;
+    console.log('status', status);
     if (status === 'connected') {
       const boughtTokensEth = await getBoughtTokens(NETWORK_ETHEREUM, address);
       const boughtTokensBsc = await getBoughtTokens(NETWORK_BSC, address);
@@ -319,36 +329,36 @@ export const useBuyWindow = () => {
   }, []);
 
   useEffect(() => {
+    //@ts-ignore
+    const calculateBalanceInFiat = (coinValue) => {
+      const price = getBaseCoinPrice;
+      if (!price) return null;
+      return (coinValue * price).toFixed(1);
+    };
+
+    if (ethEth?.formatted && network === NETWORK_ETHEREUM) {
       //@ts-ignore
-      const calculateBalanceInFiat = (coinValue) => {
-        const price = getBaseCoinPrice;
-        if (!price) return null;
-        return (coinValue * price).toFixed(1);
-      };
+      const ethValue = Math.floor(ethEth.formatted * 1000) / 1000;
 
-      if (ethEth?.formatted && network === NETWORK_ETHEREUM) {
-        //@ts-ignore
-        const ethValue = Math.floor(ethEth.formatted * 1000) / 1000;
-
-        if (!isNaN(ethValue)) {
-          setBalanceValue(ethEthValue);
-          // @ts-ignore
-          setBalanceValueFiat(calculateBalanceInFiat(ethValue));
-        }
-      } else if (bnbBNB?.formatted && network === NETWORK_BSC) {
-        //@ts-ignore
-        const bnbValue = Math.floor(bnbBNB.formatted * 1000) / 1000;
-
-        if (!isNaN(bnbValue)) {
-          setBalanceValue(bnbValue);
-          // @ts-ignore
-          setBalanceValueFiat(calculateBalanceInFiat(bnbValue));
-        }
-      } else if (network === NETWORK_SOLANA) {
-        setBalanceValue(Number(solBalance.toFixed(3)));
-        setBalanceValueFiat(Number((solBalanceFiat.toFixed(2))));
+      if (!isNaN(ethValue)) {
+        setBalanceValue(ethEthValue);
+        // @ts-ignore
+        setBalanceValueFiat(calculateBalanceInFiat(ethValue));
       }
-    },
+    } else if (bnbBNB?.formatted && network === NETWORK_BSC) {
+      //@ts-ignore
+      const bnbValue = Math.floor(bnbBNB.formatted * 1000) / 1000;
+
+      if (!isNaN(bnbValue)) {
+        setBalanceValue(bnbValue);
+        // @ts-ignore
+        setBalanceValueFiat(calculateBalanceInFiat(bnbValue));
+      }
+    } else if (network === NETWORK_SOLANA) {
+      setBalanceValue(Number(solBalance.toFixed(3)));
+      setBalanceValueFiat(Number((solBalanceFiat.toFixed(2))));
+    }
+  },
     [address, status, chainId, network, getBaseCoinPrice]
   );
 
@@ -598,7 +608,7 @@ export const useBuyWindow = () => {
     fetchBalance();
   }, [connection, publicKey, network]);
 
-  const handleAmountChange = ({type, e}: { type: "from" | "to", e: string }) => {
+  const handleAmountChange = ({ type, e }: { type: "from" | "to", e: string }) => {
     const value = e.replace(/[^0-9.]/g, '').replace(/^0+(?=\d)/, '').replace(/^0+\.$/, '0.').replace(/^\.$/, '0.');
     const amount = Number(value);
     const baseCoinPrice = isBaseCoinSelected() ? getBaseCoinPrice : 1;
