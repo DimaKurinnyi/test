@@ -20,7 +20,7 @@ function ConnectHeaderMenu() {
   const { isConnected: isEvmConnected } = useAccount();
   const { connected: isSolanaConnected } = useWallet();
 
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
   return (
     <div
@@ -56,7 +56,7 @@ const NotConnectedButtonContent = () => {
   );
 };
 
-const EvmConnectedButtonContent = ({ weight, size }: { weight: number; size: number }) => {
+export const EvmConnectedButtonContent = ({ weight, size }: { weight: number; size: number }) => {
   const { address, connector } = useAccount();
 
   const [displayAddress, setDisplayAddress] = useState(getDisplayAddress(address));
@@ -79,7 +79,7 @@ const EvmConnectedButtonContent = ({ weight, size }: { weight: number; size: num
   );
 };
 
-const SolanaConnectedButtonContent = ({ weight, size }: { weight: number; size: number }) => {
+export const SolanaConnectedButtonContent = ({ weight, size }: { weight: number; size: number }) => {
   const { walletIcon } = useWalletConnectButton();
   const { publicKey } = useWallet();
 
@@ -126,7 +126,7 @@ const DisconnectButton = (
   );
 };
 
-const ConnectEvmCustomButton = () => {
+export const ConnectEvmCustomButton = () => {
   const { openConnectModal } = useConnectModal();
 
   return (
@@ -137,7 +137,7 @@ const ConnectEvmCustomButton = () => {
   );
 };
 
-const ConnectSolanaCustomButton = () => {
+export const ConnectSolanaCustomButton = () => {
   const { setVisible } = useWalletModal();
 
   return (
@@ -148,7 +148,7 @@ const ConnectSolanaCustomButton = () => {
   );
 };
 
-const SolanaConnectionManagerElement = () => {
+export const SolanaConnectionManagerElement = () => {
   const { connected: isSolanaConnected, disconnect } = useWallet();
   const { onButtonClick: onWalletDisconnect } = useWalletDisconnectButton();
   const [isConnected, setIsConnected] = useState(isSolanaConnected);
@@ -215,7 +215,7 @@ const SolanaConnectionManagerElement = () => {
   );
 };
 
-const EvmConnectionManageElement = () => {
+ export const EvmConnectionManageElement = () => {
   const { isConnected: isEvmConnected } = useAccount();
   const { disconnect } = useDisconnect();
 

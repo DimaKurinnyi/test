@@ -17,7 +17,7 @@ export const FAQ = () => {
     {
       title: 'When and where will $FLFI launch',
       content:
-        'Flary token is scheduled to list on both centralized (CEX) and decentralized (DEX) exchanges in Q1 2025. Stay tuned for official announcements about the specific launch time and trading platforms by following our social media channels.',
+        'Flary token is scheduled to list on both centralized (CEX) and decentralized (DEX) exchanges in Q2 2025. Stay tuned for official announcements about the specific launch time and trading platforms by following our social media channels.',
     },
     {
       title: 'What Sets Flary Finance Apart from Other Protocols?',

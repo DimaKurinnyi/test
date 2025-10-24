@@ -32,9 +32,9 @@ export const ContactInfo = () => {
         <div className={style.contentBloc}>
           <MdOutlineEmail size={20} />
           <p>Email</p>
-          <span>exampleEmail.com</span>
+          <span>suport@flary.promo</span>
           <a
-            href="mailto:examle8@gmail.com"
+            href="mailto:suport@flary.promo"
             className="z-10 mt-[10px] text-sm font-medium"
             target="_blank"
             rel="noreferrer">
