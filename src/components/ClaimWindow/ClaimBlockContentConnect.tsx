@@ -63,7 +63,6 @@ export const ClaimBlockContentConnect: React.FC<{ isSolanaConnected: boolean; is
         <img src={FLFI} alt="" />
         <span>{tokens} FLFI</span>
       </div>
-      <div className=""></div>
 
       {isSolanaConnected && !isEvmConnected ? (
         <div className={styles.connect_evmbutton}>
